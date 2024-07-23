@@ -1,6 +1,7 @@
 require 'constraints/subdomain_constraint'
 
 Rails.application.routes.draw do
+  devise_for :users
   resources :sites
   
   constraints(SubdomainConstraint.new) do
