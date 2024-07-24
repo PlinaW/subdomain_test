@@ -13,6 +13,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(site_params)
     if @site.save
+      @site.site_users.create!(user: current_user, roles: 0)
       redirect_to site_root_url(subdomain: @site.subdomain), allow_other_host: true
     end
   end
