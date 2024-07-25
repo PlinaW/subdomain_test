@@ -2,6 +2,13 @@
   <h1><%= @site.name %></h1>
   <p><%= @site.subdomain %></p>
 </div>
+<div>
+  <% @site.site_users.each do |site_user| %>
+    <%= site_user.user.email %> 
+    <%= site_user.roles %>
+  <% end %>
+</div>
+
 
 <%= link_to "Logout", destroy_user_session_path, data: { "turbo-method": :delete } %>
 <%= link_to "Sites", sites_path %>
