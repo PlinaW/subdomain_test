@@ -8,12 +8,11 @@ class ApplicationController < ActionController::Base
 
   def check_registration_status
     if user_signed_in? && !current_user.completed_registration? && !on_site_creation_path?
-      redirect_to new_site_path, alert: 'Please complete your registration'
+      redirect_to new_site_path, alert: "Please complete your registration"
     end
   end
 
   def on_site_creation_path?
-    controller_name == 'sites' && action_name.in?(%w[new create])
+    controller_name == "sites" && action_name.in?(%w[new create])
   end
-
 end

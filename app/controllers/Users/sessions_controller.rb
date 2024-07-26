@@ -9,9 +9,13 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    redirect_to site_root_url(subdomain: current_user.site_users.first.site.subdomain), allow_other_host: true
+  end
 
   # DELETE /resource/sign_out
   # def destroy

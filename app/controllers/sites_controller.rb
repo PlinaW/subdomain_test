@@ -1,13 +1,11 @@
 class SitesController < ApplicationController
+  before_action :set_site
+
   def index
     @sites = Site.all
   end
 
   def show
-    @site = Site.find_by(id: params[:id])
-    if @site.nil?
-      @site = Site.find_by(subdomain: request.subdomain)
-    end
   end
 
   def create
@@ -21,9 +19,15 @@ class SitesController < ApplicationController
 
   private
 
+  def set_site
+    @site = Site.find_by(subdomain: request.subdomain)
+    if @site.nil?
+      flash[:alert] = "Couldn't find this site"
+      redirect_to root_url(subdomain: nil), allow_other_host: true
+    end
+  end
+
   def site_params
     params.require(:site).permit(:name, :subdomain, :background_color, :primary_color)
   end
-
-
 end
