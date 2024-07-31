@@ -14,5 +14,4 @@ class User < ApplicationRecord
   def set_completed_registration
     self.update(completed_registration: false)
   end
-  
 end

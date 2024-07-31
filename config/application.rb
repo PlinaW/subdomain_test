@@ -6,12 +6,16 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative "../lib/middleware/site_middleware"
+
 module Myapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
     config.hosts = nil
-    config.session_store :cookie_store, key: '_myapp_session', domain: :all, tld_length: 2
+    config.session_store :cookie_store, key: "_myapp_session", domain: :all, tld_length: 2
+
+    config.middleware.use SiteMiddleware
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -25,7 +29,5 @@ module Myapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-
   end
 end
