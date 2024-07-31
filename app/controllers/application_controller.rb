@@ -3,13 +3,8 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :authenticate_user!
   before_action :check_registration_status
-  before_action :set_current_site
 
   private
-
-  def set_current_site
-    @current_site = request.env["current_site"]
-  end
 
   def set_current_site
     subdomain = request.subdomain
