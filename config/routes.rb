@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   constraints(SubdomainConstraint.new) do
     root "sites#show", as: :site_root
+    resources :site_users, only: [ :index, :destory ]
   end
 
   root "home#index"
