@@ -2,6 +2,7 @@ require "constraints/subdomain_constraint"
 
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions", invitations: "users/invitations" }
+  resources :users, only: [ :show ]
   resources :home
   resources :sites
 
