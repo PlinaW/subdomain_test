@@ -15,6 +15,8 @@ module Myapp
     config.hosts = nil
     config.session_store :cookie_store, key: "_myapp_session", domain: :all, tld_length: 2
 
+    config.middleware.use SiteMiddleware
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

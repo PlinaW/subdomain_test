@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_action :set_current_site, only: [ :show ]
+  before_action :set_current_site
   before_action :set_site, only: [ :show ]
   before_action :authorize_site_user, only: [ :show ]
 

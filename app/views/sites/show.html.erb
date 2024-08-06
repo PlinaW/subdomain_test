@@ -12,5 +12,5 @@
 
 
 <%= link_to "Logout", destroy_user_session_path, data: { "turbo-method": :delete } %>
-<%= link_to "Sites", sites_url(subdomain: nil) %>
+<%= link_to "Sites", sites_url(subdomain: @site.subdomain) %>
 <%= link_to 'Site users', site_users_url(subdomain: @site.subdomain) %>
