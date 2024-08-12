@@ -8,11 +8,7 @@
         About me
       </dt>
       <dd class="mt-1 text-sm font-normal text-black dark:text-gray-400">
-        Tincidunt quam neque in cursus viverra orci, dapibus nec tristique. 
-        Nullam ut sit dolor consectetur urna, dui cras nec sed. Cursus risus congue arcu aenean posuere aliquam.
-        Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris amet. 
-        Urna, sem pretium sit pretium urna, senectus vitae. Scelerisque fermentum, cursus felis dui suspendisse velit pharetra. 
-        Augue et duis cursus maecenas eget quam lectus. Accumsan vitae nascetur pharetra rhoncus praesent dictum risus suspendisse.
+        <%= @user.about_me %>
       </dd>
     </div>
     <div>
@@ -20,14 +16,14 @@
         Education
       </dt>
       <dd class="text-sm font-normal text-black dark:text-gray-400">
-        Wyższa szkoła robienia hałasu
+        <%= @user.education %>
       </dd>
     </div>    <div>
       <dt class="text-sm font-normal text-gray-500 dark:text-gray-400">
         Work History
       </dt>
       <dd class="text-sm font-normal text-black dark:text-gray-400">
-        Google, Amazon, Apple
+        <%= @user.work_history %>
       </dd>
     </div>
     <div>
@@ -43,7 +39,7 @@
         Languages
       </dt>
       <dd class="text-sm font-normal text-black dark:text-gray-400">
-        English, German, Italian
+        <%= @user.languages %>
       </dd>
     </div>
     <div>
