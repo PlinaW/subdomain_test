@@ -1,0 +1,58 @@
+<div class="w-auto p-4 mb-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+  <div class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+    General information
+  </div>
+  <dl class="grid gap-9 md:grid-cols-2">
+    <div class="md:col-span-2">
+      <dt class="text-gray-500 dark:text-gray-400">
+        About me
+      </dt>
+      <dd class="mt-1 text-sm font-normal text-black dark:text-gray-400">
+        Tincidunt quam neque in cursus viverra orci, dapibus nec tristique. 
+        Nullam ut sit dolor consectetur urna, dui cras nec sed. Cursus risus congue arcu aenean posuere aliquam.
+        Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris amet. 
+        Urna, sem pretium sit pretium urna, senectus vitae. Scelerisque fermentum, cursus felis dui suspendisse velit pharetra. 
+        Augue et duis cursus maecenas eget quam lectus. Accumsan vitae nascetur pharetra rhoncus praesent dictum risus suspendisse.
+      </dd>
+    </div>
+    <div>
+      <dt class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Education
+      </dt>
+      <dd class="text-sm font-normal text-black dark:text-gray-400">
+        Wyższa szkoła robienia hałasu
+      </dd>
+    </div>    <div>
+      <dt class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Work History
+      </dt>
+      <dd class="text-sm font-normal text-black dark:text-gray-400">
+        Google, Amazon, Apple
+      </dd>
+    </div>
+    <div>
+      <dt class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Join Date
+      </dt>
+      <dd class="text-sm font-normal text-black dark:text-gray-400">
+        <%= @user.created_at %>
+      </dd>
+    </div>
+    <div>
+      <dt class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Languages
+      </dt>
+      <dd class="text-sm font-normal text-black dark:text-gray-400">
+        English, German, Italian
+      </dd>
+    </div>
+    <div>
+      <dt class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Birthday
+      </dt>
+      <dd class="text-sm font-normal text-black dark:text-gray-400">
+        <%= @user.created_at %>
+      </dd>
+    </div>
+  </dl>
+</div>   

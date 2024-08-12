@@ -1,0 +1,55 @@
+<div class="w-auto p-4 mb-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+  <div class="items-start mb-2">
+      <img class="w-20 h-20 mb-3 border border-gray-300 rounded-lg" src="#" alt="Image"/>
+  </div>
+  <div class="mb-2">
+    <div class="text-xl font-bold text-gray-900 dark:text-white">
+      <%= @user.full_name%>
+    </div>
+    <ul class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+      <li class="flex items-center">
+        <svg class="w-4 h-4 mr-1 text-black" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>
+        Full Stack Developer
+      </li>
+      <li class="flex items-center">
+        <svg class="w-4 h-4 mr-1 text-black" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.5 2C15.7815 2.0022 15.077 2.1985 14.4609 2.56816C13.8448 2.93781 13.34 3.46708 13 4.1C14.2939 4.35983 15.4316 5.12292 16.163 6.22146C16.8943 7.31999 17.1594 8.66403 16.9 9.958C17.9183 9.85564 18.8584 9.36579 19.5256 8.58976C20.1929 7.81374 20.5364 6.81092 20.485 5.78875C20.4336 4.76658 19.9913 3.80326 19.2496 3.09806C18.5079 2.39286 17.5235 1.99973 16.5 2Z" fill="#2F2F38"/>
+        <path d="M11 15H13C14.0609 15 15.0783 15.4214 15.8284 16.1716C16.5786 16.9217 17 17.9391 17 19V21H7V19C7 17.9391 7.42143 16.9217 8.17157 16.1716C8.92172 15.4214 9.93913 15 11 15Z" fill="#2F2F38"/>
+        <path d="M7 21H17V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H11C9.93913 15 8.92172 15.4214 8.17157 16.1716C7.42143 16.9217 7 17.9391 7 19V21Z" fill="#2F2F38"/>
+        <path d="M7 9C7.00127 7.84775 7.39983 6.73117 8.12849 5.83857C8.85715 4.94596 9.87133 4.33192 11 4.1C10.6737 3.49363 10.1959 2.98209 9.61315 2.61518C9.03043 2.24828 8.36263 2.03851 7.67478 2.00631C6.98692 1.97411 6.30245 2.12056 5.688 2.43141C5.07354 2.74227 4.55005 3.20693 4.16849 3.78016C3.78692 4.35338 3.56028 5.01565 3.51065 5.70246C3.46101 6.38928 3.59005 7.07725 3.88522 7.69939C4.18039 8.32153 4.63163 8.85664 5.19499 9.25262C5.75836 9.6486 6.41466 9.89196 7.1 9.959C7.03569 9.64333 7.0022 9.32215 7 9Z" fill="#2F2F38"/>
+        <path d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z" fill="#2F2F38"/>
+        <path d="M17 11H16.576C16.1678 11.9223 15.491 12.7002 14.634 13.232C15.8896 13.5886 16.9949 14.3444 17.7826 15.3851C18.5704 16.4258 18.9977 17.6948 19 19H21C21.2652 19 21.5196 18.8946 21.7071 18.7071C21.8946 18.5196 22 18.2652 22 18V16C21.9984 14.6744 21.4711 13.4036 20.5338 12.4662C19.5964 11.5289 18.3256 11.0016 17 11Z" fill="#2F2F38"/>
+        <path d="M7.424 11H7C5.67441 11.0016 4.40356 11.5289 3.46622 12.4662C2.52888 13.4036 2.00159 14.6744 2 16V18C2 18.2652 2.10536 18.5196 2.29289 18.7071C2.48043 18.8946 2.73478 19 3 19H5C5.00228 17.6948 5.42963 16.4258 6.21738 15.3851C7.00513 14.3444 8.11042 13.5886 9.366 13.232C8.50898 12.7002 7.8322 11.9223 7.424 11Z" fill="#2F2F38"/>
+        </svg>
+        Development
+      </li>
+    </ul>
+  </div>
+  <div class="mt-4 space-y-3">
+    <div>
+      <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Email address
+      </div>
+      <div class="text-sm font-normal text-black dark:text-gray-400">
+        <%= @user.email%>
+      </div>
+    </div>
+    <div>
+      <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Home address
+      </div>
+      <div class="text-sm font-normal text-black dark:text-gray-400">
+        <%= @user.full_address%> <br>
+        <%= @user.country%>
+      </div>
+    </div>
+    <div>
+      <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Phone number
+      </div>
+      <div class="text-sm font-normal text-black dark:text-gray-400">
+        <%= @user.phone_number%>
+      </div>
+    </div>
+  </div>
+</div>

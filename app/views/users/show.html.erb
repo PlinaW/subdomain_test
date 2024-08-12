@@ -1,44 +1,18 @@
-<%= current_user.first_name%> <br>
-<%= current_user.last_name%> <br>
-<%= current_user.email%> <br>
-<%= current_user.country%> <br>
-<%= current_user.city%> <br>
-<%= current_user.address%> <br>
-<%= current_user.phone_number%> <br>
-<%= current_user.birthday%> <br>
-<%= current_user.zip_code%>
 
-
-
-
-<div class="w-auto p-6 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    
-    <div class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-      <%= current_user.full_name%>
-    </div>
-    <div class="mb-2">
-      <div class="font-normal text-gray-500 dark:text-gray-400">
-        Email address
-      </div>
-      <div class="font-normal text-black dark:text-gray-400">
-        <%= current_user.email%>
+<div class="px-4 pt-6 bg-slate-50">
+  <div class="xl:grid xl:grid-cols-3 xl:gap-4">
+    <div class="col-span-3 mb-2">
+      <div class="text-xl font-semibold lg:text-2xl">
+        Profile
       </div>
     </div>
-    <div class="mb-2">
-      <div class="font-normal text-gray-500 dark:text-gray-400">
-        Home address
-      </div>
-      <div class="font-normal text-black dark:text-gray-400">
-        <%= current_user.full_address%> <br>
-        <%= current_user.country%>
-      </div>
+    <div class="col-span-1">
+      <%= render '/users/show/user_card'%>
+      <%= render '/users/show/skills'%>
+      <%= render '/users/show/hobbies'%>  
     </div>
-    <div class="mb-2">
-      <div class="font-normal text-gray-500 dark:text-gray-400">
-        Phone number
-      </div>
-      <div class="font-normal text-black dark:text-gray-400">
-        <%= current_user.phone_number%>
-      </div>
-    </div>
+    <div class="col-span-2">
+      <%= render '/users/show/general_info'%>  
+    </div>   
+  </div>   
 </div>
