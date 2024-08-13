@@ -2,14 +2,11 @@
   <div class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
     Skills
   </div>
-  <ul class="flex mt-4 space-x-2">
-    <li>
-      <span class="bg-green-100 text-green-800 text font-medium px-3 py-1.5 rounded dark:bg-green-900 dark:text-green-300">Brand Design</span>
-    </li>
-    <li>
-      <span class="bg-green-100 text-green-800 text font-medium px-3 py-1.5 rounded dark:bg-green-900 dark:text-green-300">Logo Design</span>
-    </li>
-  </ul>
+  <div class="flex flex-wrap gap-2">
+    <% @user.skills.split(',').each do |skill| %>
+      <div class=" bg-green-100 text-green-800 font-medium px-3 py-1.5 rounded dark:bg-green-900 dark:text-green-300">
+          <%= skill.titleize %>
+      </div>
+    <% end %>
+  </div>
 </div>  
-  
-
