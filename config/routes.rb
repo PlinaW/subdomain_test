@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         post :invite
       end
     end
+    resources :users, only: [ :show ]
   end
 
   root "home#index"

@@ -10,6 +10,18 @@ class User < ApplicationRecord
   belongs_to :site, optional: true
   has_many :site_users
 
+  def full_name
+    return "#{first_name} #{last_name}" if first_name || last_name
+
+    "Anonymous"
+  end
+
+  def full_address
+    return "#{address}, #{zip_code}, #{city},"
+
+    "Anonymous"
+  end
+
   private
 
   def set_completed_registration_false

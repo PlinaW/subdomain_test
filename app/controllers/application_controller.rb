@@ -7,13 +7,28 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_site
-    subdomain = request.subdomain
-    @current_site = Site.find_by(subdomain: subdomain)
+    @current_site = request.env["current_site"]
 
     if @current_site.nil?
-      redirect_to root_url(subdomain: nil), alert: "Site not found"
+      redirect_to root_url(subdomain: nil), allow_other_host: true, alert: "Site not found"
     end
+
+    # if !@current_site && !@sites.include?(@current_site&.subdomain)
+    #   flash[:alert] = "Site not found"
+    #   redirect_to root_url(subdomain: nil), allow_other_host: true
+    # end
   end
+
+
+
+  # def set_current_site
+  #   subdomain = request.subdomain
+  #   @current_site = Site.find_by(subdomain: subdomain)
+
+  #   if @current_site.nil?
+  #     redirect_to root_url(subdomain: nil), alert: "Site not found"
+  #   end
+  # end
 
   def check_registration_status
     if user_signed_in? && !current_user.completed_registration? && !on_site_creation_path?
