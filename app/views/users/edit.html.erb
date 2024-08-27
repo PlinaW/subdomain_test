@@ -1,9 +1,12 @@
-<div class="bg-gray-50">
+<div class="p-10 bg-gray-50">
   <div class="grid grid-cols-4 gap-6">
     <div class="col-span-2 col-start-1">
       <%= render partial: "users/edit/form" %>
     </div>
-    <div class="col-span-2">
+    <div class="col-span-2 space-y-6">
+      <div>
+        <%= render partial: "users/edit/user_photo" %>
+      </div>
       <div>
         <%= render partial: "users/registrations/form", locals: {resource: current_user, resource_name: :user}%>
       </div>
