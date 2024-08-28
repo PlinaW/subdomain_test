@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         post :invite
       end
     end
-    resources :users, only: [ :show, :edit, :update ]
+    resources :users, only: [ :index, :show, :edit, :update ]
   end
 
   root "home#index"
