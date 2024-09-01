@@ -1,18 +1,4 @@
-<h1>Invite Members</h1>
-
-<%= form_with url: invite_site_users_path do |form| %>
-  <%= form.text_field :email, placeholder: 'Email' %>
-  <%= form.submit 'Invite' %>
-<% end %>
-
-<h1>Members</h1>
-
-<% @site_users.each do |site_user| %>
-    <%= site_user.user.email %>
-    <%= site_user.roles %>
-<% end %>
-
-<section class="p-3 bg-gray-50 dark:bg-gray-900 sm:p-5">
+<div class="p-3 bg-gray-50 dark:bg-gray-900 sm:p-5">
   <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
       <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
         <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
@@ -51,17 +37,17 @@
               </tr>
             </thead>
             <tbody>
-              <% @site_users.each do |site_user| %>
+              <% @users.each do |user| %>
                 <tr class="border-b dark:border-gray-700">
                   <th scope="row" class="px-10 py-3 font-medium text-gray-900 sm:px-5 whitespace-nowrap dark:text-white">
                     <div class="flex items-center justify-center sm:justify-start">
                       <%= image_tag("https://via.placeholder.com/50", class:"rounded-full mr-4", alt: "User avatar")%>
                       <div class="grid grid-rows-2">
                         <div class="row-start-1">
-                          <%= site_user.user.full_name%> 
+                          <%= user.full_name%> 
                         </div>
                         <div class="text-gray-500">
-                          <%= site_user.user.email%> 
+                          <%= user.email%> 
                         </div>
                       </div>
                     </div>
@@ -70,15 +56,15 @@
                   <td class="px-5 py-3 sm:px-10">placeholder</td>
                   <td class="px-5 py-3 sm:px-10 itemst-center">
                     <div class="flex items-center justify-center">
-                      <button id="<%=site_user.user.id%>Button" data-dropdown-toggle="<%=site_user.user.id%>" class="w-full px-4 py-2 text-sm font-medium bg-white rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
+                      <button id="<%=user.id%>Button" data-dropdown-toggle="<%=user.id%>" class="w-full px-4 py-2 text-sm font-medium bg-white rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
                           <%= icon('fa-solid text-gray-700', 'ellipsis')%>
                       </button>
-                      <div id="<%=site_user.user.id%>" class="hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600" aria-labelledby="<%=site_user.user.id%>Button">
+                      <div id="<%=user.id%>" class="hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600" aria-labelledby="<%=user.id%>Button">
                           <div>
-                            <%= link_to 'Show', user_path(site_user.user), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
+                            <%= link_to 'Show', user_path(user), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
                           </div>
                           <div>
-                            <%= link_to 'Edit', edit_user_path(site_user.user), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
+                            <%= link_to 'Edit', edit_user_path(user), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
                           </div>
                       </div>
                     </div>
@@ -90,10 +76,4 @@
         </div>
       </div>
   </div>
-</section>
-
-
-
-
-
-
+</div>
