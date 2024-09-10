@@ -10,6 +10,9 @@ class User < ApplicationRecord
   belongs_to :site, optional: true
   has_many :site_users
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def full_name
     return "#{first_name} #{last_name}" if first_name || last_name
 
@@ -17,9 +20,7 @@ class User < ApplicationRecord
   end
 
   def full_address
-    return "#{address}, #{zip_code}, #{city},"
-
-    "Anonymous"
+    "#{address}, #{zip_code}, #{city},"
   end
 
   private
