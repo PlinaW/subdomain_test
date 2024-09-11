@@ -8,15 +8,27 @@ class Users::InvitationsController < Devise::InvitationsController
     yield resource if block_given?
 
     if resource_invited
+      @users = @current_site.users
+
       if is_flashing_format? && self.resource.invitation_sent_at
         set_flash_message :notice, :send_instructions, email: self.resource.email
       end
-      if self.method(:after_invite_path_for).arity == 1
-        respond_with resource, location: after_invite_path_for(current_inviter)
-      else
-        respond_with resource, location: after_invite_path_for(current_inviter, resource)
-      end
+
       resource.site_users.find_or_create_by(site: @current_site, roles: :member)
+
+      respond_to do |format|
+        if self.method(:after_invite_path_for).arity == 1
+          location = after_invite_path_for(current_inviter)
+        else
+          location = after_invite_path_for(current_inviter, resource)
+        end
+
+        format.html { respond_with resource, location: location }
+
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update("users", partial: "users/index/users_table", locals: { user: resource })
+        end
+      end
     else
       respond_with(resource)
     end
