@@ -26,7 +26,10 @@ class Users::InvitationsController < Devise::InvitationsController
         format.html { respond_with resource, location: location }
 
         format.turbo_stream do
-          render turbo_stream: turbo_stream.update("users", partial: "users/index/users_table", locals: { user: resource })
+          render turbo_stream: [
+            turbo_stream.update("users", partial: "users/index/users_table", locals: { user: resource }),
+            turbo_stream.update("flash", partial: "layouts/flash")
+          ]
         end
       end
     else
