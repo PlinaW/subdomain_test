@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "modal" ]
 
-    // hide modal on successful form submission
+  // hide modal on successful form submission
   // data-action="turbo:submit-end->turbo-modal#submitEnd"
   submitEnd(e) {
     if (e.detail.success) {
@@ -15,6 +15,10 @@ export default class extends Controller {
   open() {
     this.modalTarget.showModal();
     document.body.classList.add("overflow-hidden");
+  }
+
+  close() {
+    this.modalTarget.close()
   }
 
   clickOutside(event) {

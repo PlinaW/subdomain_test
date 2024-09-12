@@ -1,10 +1,6 @@
 <div data-controller="dialog" data-action="click->dialog#clickOutside" >
-
   <%= render partial: "users/index/users_table" %>
-
-  <%= Time.zone.now %>
   <dialog data-dialog-target="modal" class="backdrop:bg-slate-400 backdrop:opacity-80">
       <%= turbo_frame_tag :modal %>
   </dialog>
-  
 </div>
