@@ -14,6 +14,7 @@
 #               password: 'password',
 #               first_name: Faker::Name.first_name,
 #               last_name: Faker::Name.last_name)
+#               completed_registration: true
 # end
 
 # User.all.each do |user|
