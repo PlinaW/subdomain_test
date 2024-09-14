@@ -62,7 +62,7 @@ gem "devise", "~> 4.9"
 
 gem "devise_invitable", "~> 2.0"
 
-gem "tailwindcss-rails", "~> 2.6"
+gem "tailwindcss-rails", "~> 2.7"
 
 gem "font-awesome-sass", "~> 6.5"
 
