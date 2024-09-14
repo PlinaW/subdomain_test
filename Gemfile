@@ -65,3 +65,5 @@ gem "devise_invitable", "~> 2.0"
 gem "tailwindcss-rails", "~> 2.6"
 
 gem "font-awesome-sass", "~> 6.5"
+
+gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "main"
