@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :set_current_site
 
   def index
-    @users = @current_site.users
+    @q = @current_site.users.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def show

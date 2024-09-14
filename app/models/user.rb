@@ -13,6 +13,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    [ "first_name", "last_name", "phone_number", "roles" ]
+  end
+
   def full_name
     return "#{first_name} #{last_name}" if first_name || last_name
 
