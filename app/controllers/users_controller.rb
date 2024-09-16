@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @q = @current_site.users.ransack(params[:q])
-    @users = @q.result.includes(:site_users)
+    @pagy, @users = pagy(@q.result.includes(:site_users), limit: 5)
   end
 
   def show
