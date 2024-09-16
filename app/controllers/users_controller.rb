@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @q = @current_site.users.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @users = @q.result.includes(:site_users)
   end
 
   def show

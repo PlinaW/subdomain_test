@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_13_145751) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "updated_at ", null: false
     t.boolean "completed_registration"
     t.string "invitation_token"
     t.datetime "invitation_created_at"
