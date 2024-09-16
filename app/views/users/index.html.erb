@@ -11,34 +11,43 @@
   </div>
 </div>
 
-
+<%= Time.zone.now %>
 <div class="mb-10">
-  <%= search_form_for @q do |f| %>
+  <%= search_form_for @q, data: {turbo_frame: :users_results, turbo_action: 'advance'} do |f| %>
     <%= f.label :full_name_or_country_or_site_users_roles_cont %>
-    <%= f.search_field :full_name_or_country_or_site_users_roles_cont %>
+    <%= f.search_field :full_name_or_country_or_site_users_roles_cont, oninput: 'this.form.requestSubmit();' %>
 
     <%= f.submit "Search" %>
   <% end %>
 </div>
 
-<table>
-  <thead >
-    <tr>
-      <th class="w-1/3"><%= sort_link(@q, :full_name, default_order: :desc) %></th>
-      <th class="w-1/3"><%= sort_link(@q, :site_users_roles, default_order: :desc) %></th>
-      <th class="w-1/3"><%= sort_link(@q, :country, default_order: :desc) %></th>
+<%= turbo_frame_tag :users_results, data: {turbo_action: 'advance'} do %>
+<%= Time.zone.now %>
 
-
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <th><%= user.full_name%></th>
-        <th><%= user.site_users.first.roles%></th>
-        <th><%= user.country%></th>
-      </tr>              
-    <%end%>
-  </tbody>   
   <%== pagy_nav(@pagy) %>     
-</table>
+
+  <table>
+    <thead >
+      <tr>
+        <th class="w-1/4"><%= sort_link(@q, :full_name, default_order: :desc) %></th>
+        <th class="w-1/4"><%= sort_link(@q, :site_users_roles, default_order: :desc) %></th>
+        <th class="w-1/4"><%= sort_link(@q, :country, default_order: :desc) %></th>
+        <th class="w-1/4">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= highlight user.full_name, params.dig(:q, :full_name_or_country_or_site_users_roles_cont)%></td>
+          <td><%= highlight user.site_users.first.roles, params.dig(:q, :full_name_or_country_or_site_users_roles_cont)%></td>
+          <td><%= highlight user.country, params.dig(:q, :full_name_or_country_or_site_users_roles_cont)%></td>
+          <td class="flex items-center justify-center">
+            <%= link_to 'Show', user_path(user), data: {turbo_frame: "_top"}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
+            <%= link_to 'Edit', edit_user_path(user), data: {turbo_frame: "_top"}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
+          </td>
+        </tr>              
+      <%end%>
+    </tbody>   
+  </table>
+
+<% end %>
