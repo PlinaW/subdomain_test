@@ -1,32 +1,23 @@
 <tr class="border-b dark:border-gray-700">
-  <th scope="row" class="px-10 py-3 font-medium text-gray-900 sm:px-5 whitespace-nowrap dark:text-white">
-    <div class="flex items-center justify-center sm:justify-start">
+  <td scope="row" class="px-10 py-3 font-medium text-gray-900 sm:px-5 whitespace-nowrap dark:text-white">
+    <div class="flex items-center justify-start sm:justify-start">
       <%= image_tag("https://via.placeholder.com/50", class:"rounded-full mr-4", alt: "User avatar")%>
       <div class="grid grid-rows-2">
         <div class="row-start-1">
-          <%= user.full_name%> 
+          <%= highlight user.full_name, params.dig(:q, :full_name_or_country_or_site_users_roles_or_email_cont)%>
         </div>
-        <div class="text-gray-500">
-          <%= user.email%> 
+        <div class="text-gray-400">
+          <%= highlight user.email, params.dig(:q, :full_name_or_country_or_site_users_roles_or_email_cont) %> 
         </div>
       </div>
     </div>
-  </th>
-  <td class="px-5 py-3 sm:px-10">placeholder</td>
-  <td class="px-5 py-3 sm:px-10">placeholder</td>
+  </td>
+  <td class="px-5 py-3 sm:px-10"><%= highlight user.site_users.first.roles, params.dig(:q, :full_name_or_country_or_site_users_roles_or_email_cont)%></td>
+  <td class="px-5 py-3 sm:px-10"><%= highlight user.country, params.dig(:q, :full_name_or_country_or_site_users_roles_or_email_cont)%></td>
   <td class="px-5 py-3 sm:px-10 itemst-center">
     <div class="flex items-center justify-center">
-      <button id="<%=user.id%>Button" data-dropdown-toggle="<%=user.id%>" class="w-full px-4 py-2 text-sm font-medium bg-white rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
-          <%= icon('fa-solid text-gray-700', 'ellipsis')%>
-      </button>
-      <div id="<%=user.id%>" class="hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600" aria-labelledby="<%=user.id%>Button">
-          <div>
-            <%= link_to 'Show', user_path(user), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
-          </div>
-          <div>
-            <%= link_to 'Edit', edit_user_path(user), class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
-          </div>
-      </div>
+      <%= link_to 'Show', user_path(user), data: {turbo_frame: "_top"}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
+      <%= link_to 'Edit', edit_user_path(user), data: {turbo_frame: "_top"}, class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" %>
     </div>
   </td>
 </tr>

@@ -13,6 +13,22 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  ransacker :full_name do |parent|
+    Arel::Nodes::NamedFunction.new("concat", [
+      parent.table[:first_name],
+      Arel::Nodes::Quoted.new(" "),
+      parent.table[:last_name]
+    ])
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "full_name", "first_name", "last_name", "country", "email" ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    [ "site_users" ]
+  end
+
   def full_name
     return "#{first_name} #{last_name}" if first_name || last_name
 
