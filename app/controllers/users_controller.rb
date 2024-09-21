@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_current_site
 
   def index
-    @q = @current_site.users.ransack(params[:q])
+    @q = @current_site.users.order(first_name: :asc).ransack(params[:q])
     @pagy, @users = pagy(@q.result.includes(:site_users), limit: 10)
   end
 

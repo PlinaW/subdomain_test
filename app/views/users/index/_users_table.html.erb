@@ -1,8 +1,24 @@
 <div class="p-3 bg-gray-50 dark:bg-gray-900 sm:p-5">
   <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
-    <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+    <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
       
       <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+        <div class="w-full md:w-1/2">
+          <%= search_form_for @q, data: {turbo_frame: :users_results, turbo_action: 'advance'} do |f| %>
+            <%= f.label :full_name_or_country_or_site_users_roles_or_email_cont, class:"sr-only" %>
+            <div class="relative">
+              <%= f.search_field :full_name_or_country_or_site_users_roles_or_email_cont, 
+                oninput: 'this.form.requestSubmit();', 
+                class:"block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500",
+                placeholder: "Search for users" %>
+
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <%= icon('fa-solid fa-magnifying-glass text-gray-400', '') %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
         <div class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
           <div data-controller="dialog" data-action="click->dialog#clickOutside" >
             <%= link_to "Add User", new_user_invitation_url(subdomain: @current_site.subdomain), data: {action: "click->dialog#open", turbo_frame: :modal}, class:"flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800" %>
@@ -13,38 +29,35 @@
         </div>
       </div>
 
-      <%= search_form_for @q do |f| %>
-
-        
-        <%= f.label :first_name %>
-        <%= f.search_field :first_name_cont %>
-
-        <%= f.submit %>
-      <% end %>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" class="px-5 py-3">
-                <%= sort_link(@q, :first_name, default_order: :desc) do %>
-                  Name
-                <% end %>
-              </th>
-              <th scope="col" class="px-5 py-3 sm:px-10">ROLE</th>
-              <th scope="col" class="px-5 py-3 sm:px-10">DEPARTMENT</th>
-              <th scope="col" class="px-5 py-3 sm:px-10">
-                  <span class="sr-only">Actions</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="users">
-            <% @users.each do |user| %>
-              <%= render partial: "users/index/user_row", locals: {user: user} %>
-            <%end%>
-          </tbody>
-        </table>
-      </div>
+      <%= turbo_frame_tag :users_results, data: {turbo_action: 'advance'} do %>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="w-1/4 px-5 py-3">
+                  <%= sort_link(@q, :full_name, default_order: :desc) do %>
+                    FULL NAME
+                  <% end %>
+                </th>
+                <th scope="col" class="w-1/4 px-5 py-3 sm:px-10"><%= sort_link(@q, :site_users_roles, default_order: :desc) %></th>
+                <th scope="col" class="w-1/4 px-5 py-3 sm:px-10"><%= sort_link(@q, :country, default_order: :desc) %></th>
+                <th scope="col" class="w-1/4 px-5 py-3 sm:px-10">
+                    <span class="sr-only">Actions</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="users">
+              <% @users.each do |user| %>
+                <%= render partial: "users/index/user_row", locals: {user: user} %>
+              <%end%>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex justify-end p-2">
+          <%== pagy_nav(@pagy) %>  
+        </div>
+      <%end%>
+      
     </div>
   </div>
 </div>
