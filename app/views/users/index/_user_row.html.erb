@@ -1,7 +1,14 @@
 <tr class="border-b dark:border-gray-700">
   <td scope="row" class="px-10 py-3 font-medium text-gray-900 sm:px-5 whitespace-nowrap dark:text-white">
     <div class="flex items-center justify-start sm:justify-start">
-      <%= image_tag("https://via.placeholder.com/50", class:"rounded-full mr-4", alt: "User avatar")%>
+
+      <% if user.avatar.present? %>
+        <%= image_tag user.avatar.variant(:thumb), class:"rounded-full mr-4" %>
+      <% else %>
+        <%= image_tag("https://via.placeholder.com/50", class:"rounded-full mr-4", alt: "User avatar")%>
+      <% end %>
+
+
       <div class="grid grid-rows-2">
         <div class="row-start-1">
           <%= highlight user.full_name, params.dig(:q, :full_name_or_country_or_site_users_roles_or_email_cont)%>
