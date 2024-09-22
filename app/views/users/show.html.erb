@@ -8,8 +8,8 @@
     </div>
     <div class="col-span-1">
       <%= render '/users/show/user_card'%>
-      <%= render '/users/show/skills'%>
-      <%= render '/users/show/hobbies'%>  
+      <%= render '/users/show/skills' if @user.skills.present?%>
+      <%= render '/users/show/hobbies' if @user.hobbies.present?%>  
     </div>
     <div class="col-span-2">
       <%= render '/users/show/general_info'%>  
