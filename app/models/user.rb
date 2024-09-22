@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
   belongs_to :site, optional: true
   has_many :site_users
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_limit: [ 200, 200 ]
+  end
 
   validates :first_name, presence: true
   validates :last_name, presence: true
