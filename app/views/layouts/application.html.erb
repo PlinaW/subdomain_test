@@ -48,16 +48,8 @@
     </div>
 
     <%= render partial: "layouts/sidebar" %>
-    <div class="fixed w-60 flex flex-col justify-between h-[calc(100vh-56px)] bg-slate-400 top-14" >
-      <div class="">
-        sidebar top
-      </div>
-      <div class="">
-        sidebar bottom
-      </div>
-    </div>
 
-    <main class="h-screen p-4 ml-60 mt-14 bg-slate-500">
+    <main class="h-screen p-4 sm:ml-60 mt-14 bg-slate-500">
       <%= yield %>
     </main>
 
