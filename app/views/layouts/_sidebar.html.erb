@@ -1,0 +1,18 @@
+<aside id="default-sidebar" class="fixed left-0 z-40 w-full h-screen mt-20 transition-transform -translate-x-full sm:mt-14 sm:w-60 sm:translate-x-0" aria-label="Sidenav">
+  <div class="h-full px-3 py-5 overflow-y-auto bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <ul class="space-y-2">
+      <li>
+        <%= link_to root_path, class:"flex items-center justify-center sm:justify-start p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" do %>
+          <%= icon('fa-solid fa-house text-gray-400 mr-3', '') %>
+          Home
+        <% end %>
+      </li>
+      <li>
+        <%= link_to users_path, class:"flex items-center justify-center sm:justify-start p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" do %>
+          <%= icon('fa-solid fa-user-group text-gray-400 mr-3', '') %>              
+          Users
+        <% end %>        
+      </li>
+    </ul>
+  </div>
+</aside>
