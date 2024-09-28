@@ -1,0 +1,26 @@
+<div class="fixed top-0 left-0 right-0 z-50 p-3 bg-white border-b border-gray-200">
+  <div class="flex flex-wrap items-center justify-between">
+
+    <div class="flex items-center justify-center space-x-1">
+      <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 text-sm rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+        <span class="sr-only">Open sidebar</span>
+        <%= icon('fa-solid fa-bars', ()) %>
+      </button>
+      <%= link_to root_path, class:"self-center font-semibold whitespace-nowrap dark:text-white" do%>          
+        PM APP
+      <% end %>
+    </div>
+        
+    <div class="">
+      <% if @current_user && @current_user.avatar.present? %>
+        <%= image_tag @current_user.avatar.variant(resize_to_fit: [40, 40]), class:"rounded-full" %>
+      <% else %>
+        <%= image_tag("https://via.placeholder.com/50", class:"rounded-full", alt: "User avatar")%>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+
